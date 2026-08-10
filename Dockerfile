@@ -1,27 +1,36 @@
 FROM dunglas/frankenphp:php8.2-bookworm
 
-# Install system dependencies
+# ==========================================
+# System dependencies
+# ==========================================
+
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     zip \
     curl \
+    ca-certificates \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     libwebp-dev \
     libzip-dev \
     libonig-dev \
-    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# ==========================================
 # Configure GD
+# ==========================================
+
 RUN docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg \
     --with-webp
 
-# Install PHP extensions
+# ==========================================
+# PHP extensions
+# ==========================================
+
 RUN docker-php-ext-install -j$(nproc) \
     gd \
     pdo_mysql \
@@ -31,7 +40,10 @@ RUN docker-php-ext-install -j$(nproc) \
     pcntl \
     zip
 
-# Install Node.js 22
+# ==========================================
+# Node.js 22
+# ==========================================
+
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get update \
     && apt-get install -y nodejs \
@@ -40,12 +52,18 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Verify Node and npm
 RUN node --version && npm --version
 
+# ==========================================
 # Composer
+# ==========================================
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-# Composer dependencies
+# ==========================================
+# PHP dependencies
+# ==========================================
+
 COPY composer.json composer.lock ./
 
 RUN composer install \
@@ -55,18 +73,30 @@ RUN composer install \
     --prefer-dist \
     --no-scripts
 
+# ==========================================
 # Node dependencies
+# ==========================================
+
 COPY package.json package-lock.json ./
 
 RUN npm ci
 
-# Copy application
+# ==========================================
+# Application
+# ==========================================
+
 COPY . .
 
-# Build frontend assets
+# ==========================================
+# Build frontend
+# ==========================================
+
 RUN npm run build
 
+# ==========================================
 # Laravel directories
+# ==========================================
+
 RUN mkdir -p \
     storage/framework/sessions \
     storage/framework/views \
@@ -76,14 +106,24 @@ RUN mkdir -p \
 
 RUN chmod -R 775 storage bootstrap/cache
 
-# Laravel caches
+# ==========================================
+# Laravel optimization
+# ==========================================
+
 RUN php artisan package:discover --ansi
+
 RUN php artisan config:cache
+
 RUN php artisan event:cache
+
 RUN php artisan route:cache
+
 RUN php artisan view:cache
 
-# FrankenPHP document root
+# ==========================================
+# FrankenPHP
+# ==========================================
+
 ENV SERVER_ROOT=/app/public
 
 EXPOSE 8080
