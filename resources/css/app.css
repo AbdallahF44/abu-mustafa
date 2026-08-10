@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Cairo', 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+
+    --color-sky-primary: #0ea5e9;
+    --color-sky-light: #e0f2fe;
+    --color-sky-dark: #0284c7;
+}
+
+/* =========================
+   Global
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+}
+
+/* =========================
+   Background
+========================= */
+
+.page-background {
+    background:
+        radial-gradient(circle at top right,
+            rgba(14, 165, 233, 0.12),
+            transparent 35%),
+        radial-gradient(circle at bottom left,
+            rgba(56, 189, 248, 0.10),
+            transparent 35%),
+        #f8fafc;
+}
+
+/* =========================
+   Cards
+========================= */
+
+.modern-card {
+    @apply rounded-3xl border border-white/70 bg-white/90 shadow-xl shadow-sky-100/40 backdrop-blur-sm;
+}
+
+/* =========================
+   Inputs
+========================= */
+
+.modern-input {
+    @apply w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-800 outline-none transition duration-300 placeholder:text-slate-400 hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.primary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-5 py-3 font-semibold text-white shadow-lg shadow-sky-200 transition duration-300 hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-xl hover:shadow-sky-200 active:translate-y-0 focus:outline-none focus:ring-4 focus:ring-sky-200;
+}
+
+.secondary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-5 py-3 font-semibold text-slate-700 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-200 active:translate-y-0;
+}
+
+.danger-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-2 font-semibold text-red-600 transition duration-300 hover:bg-red-100 hover:text-red-700;
+}
+
+/* =========================
+   Animations
+========================= */
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   Selection
+========================= */
+
+::selection {
+    background: #bae6fd;
+    color: #075985;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bae6fd;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7dd3fc;
+}
