@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
     libwebp-dev \
     libzip-dev \
     libonig-dev \
-    nodejs \
-    npm \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure GD
@@ -31,6 +30,15 @@ RUN docker-php-ext-install -j$(nproc) \
     exif \
     pcntl \
     zip
+
+# Install Node.js 22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get update \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Verify Node and npm
+RUN node --version && npm --version
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -50,7 +58,7 @@ RUN composer install \
 # Node dependencies
 COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
 # Copy application
 COPY . .
