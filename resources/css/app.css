@@ -1,16 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@source "../../resources/views/**/*.blade.php";
+@source "../../app/**/*.php";
+@source "../../vendor/filament/**/*.blade.php";
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
 
 @theme {
-    --font-sans: 'Cairo', 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Cairo", "Tajawal", ui-sans-serif, system-ui, sans-serif;
 
     --color-sky-primary: #0ea5e9;
     --color-sky-light: #e0f2fe;
@@ -26,7 +23,7 @@ html {
 }
 
 body {
-    font-family: 'Cairo', 'Tajawal', sans-serif;
+    font-family: "Cairo", "Tajawal", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* =========================
