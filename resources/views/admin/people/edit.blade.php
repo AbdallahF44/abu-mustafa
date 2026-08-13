@@ -8,6 +8,7 @@
     <title>تعديل بيانات الشخص | أبو مصطفى</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 </head>
 
 <body class="min-h-screen bg-slate-50">
@@ -21,7 +22,7 @@
 
                 <a href="{{ route('admin.people.index') }}"
                     class="ml-3 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-lg text-slate-500 transition duration-300 hover:bg-sky-50 hover:text-sky-600">
-                    ←
+                    →
                 </a>
 
                 <div>
@@ -29,7 +30,7 @@
                         إدارة الأشخاص
                     </p>
 
-                    <h1 class="font-black text-slate-800">
+                    <h1 class="font-bold text-slate-800">
                         تعديل بيانات الشخص
                     </h1>
                 </div>
@@ -100,7 +101,7 @@
 
                         <div>
 
-                            <h2 class="text-xl font-black text-slate-800">
+                            <h2 class="text-xl font-bold text-slate-800">
                                 تعديل بيانات الشخص
                             </h2>
 
@@ -124,7 +125,7 @@
                         {{-- Name --}}
                         <div>
 
-                            <label for="name" class="mb-2 block text-sm font-black text-slate-700">
+                            <label for="name" class="mb-2 block text-sm font-bold text-slate-700">
                                 الاسم
                             </label>
 
@@ -152,7 +153,7 @@
                         {{-- National ID --}}
                         <div>
 
-                            <label for="national_id" class="mb-2 block text-sm font-black text-slate-700">
+                            <label for="national_id" class="mb-2 block text-sm font-bold text-slate-700">
                                 رقم الهوية
                             </label>
 
@@ -180,7 +181,7 @@
                         {{-- Phone --}}
                         <div>
 
-                            <label for="phone" class="mb-2 block text-sm font-black text-slate-700">
+                            <label for="phone" class="mb-2 block text-sm font-bold text-slate-700">
                                 رقم الجوال
                             </label>
 
@@ -208,7 +209,7 @@
                         {{-- Election Status --}}
                         <div>
 
-                            <p class="mb-3 text-sm font-black text-slate-700">
+                            <p class="mb-3 text-sm font-bold text-slate-700">
                                 حالة الانتخاب
                             </p>
 
@@ -235,7 +236,7 @@
 
                                             <div>
 
-                                                <p class="font-black text-slate-700">
+                                                <p class="font-bold text-slate-700">
                                                     منتخب
                                                 </p>
 
@@ -272,7 +273,7 @@
 
                                             <div>
 
-                                                <p class="font-black text-slate-700">
+                                                <p class="font-bold text-slate-700">
                                                     غير منتخب
                                                 </p>
 
@@ -321,7 +322,7 @@
 
                                     @if ($person->is_elected)
                                         <span
-                                            class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-black text-green-600">
+                                            class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-600">
 
                                             <x-icons.check class="h-4 w-4" />
 
@@ -330,7 +331,7 @@
                                         </span>
                                     @else
                                         <span
-                                            class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1.5 text-xs font-black text-red-600">
+                                            class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1.5 text-xs font-bold text-red-600">
 
                                             <x-icons.x class="h-4 w-4" />
 
@@ -347,10 +348,10 @@
 
 
                         {{-- Buttons --}}
-                        <div class="flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row-reverse">
+                        <div class="flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row">
 
                             <button type="submit"
-                                class="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                                class="cursor-pointer flex flex-1 items-center justify-center gap-2 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
 
                                 <x-icons.check class="h-5 w-5" />
 

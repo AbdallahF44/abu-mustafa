@@ -10,6 +10,7 @@
     <title>{{ $person->name }} | أبو مصطفى</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
 </head>
 
@@ -57,7 +58,7 @@
                                 أهلاً بك
                             </p>
 
-                            <h1 class="mt-1 text-2xl font-black">
+                            <h1 class="mt-1 text-2xl font-bold">
                                 {{ $person->name }}
                             </h1>
 
@@ -88,7 +89,7 @@
                                 رقم الهوية
                             </p>
 
-                            <p class="mt-1 font-black tracking-wide text-slate-700">
+                            <p class="mt-1 font-bold tracking-wide text-slate-700">
                                 {{ $person->national_id }}
                             </p>
 
@@ -113,7 +114,7 @@
                                 رقم الجوال
                             </p>
 
-                            <p class="mt-1 font-black tracking-wide text-slate-700">
+                            <p class="mt-1 font-bold tracking-wide text-slate-700">
                                 {{ $person->phone ?: 'غير متوفر' }}
                             </p>
 
@@ -152,7 +153,7 @@
 
                             <p
                                 class="
-                                mt-1 font-black
+                                mt-1 font-bold
                                 {{ $person->is_elected ? 'text-green-600' : 'text-red-600' }}
                             ">
                                 {{ $person->is_elected ? 'منتخب' : 'غير منتخب' }}
@@ -166,7 +167,7 @@
                     {{-- Note --}}
                     <div class="border-t border-slate-100 pt-6">
 
-                        <h2 class="mb-3 text-sm font-black text-slate-700">
+                        <h2 class="mb-3 text-sm font-bold text-slate-700">
                             إرسال ملاحظة
                         </h2>
 
@@ -187,7 +188,7 @@
 
 
                             <button type="submit"
-                                class="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-sky-500 px-5 py-3.5 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-sky-600">
+                                class="cursor-pointer mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-sky-500 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-sky-600">
 
                                 <x-icons.notes class="h-5 w-5" />
 

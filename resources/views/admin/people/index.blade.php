@@ -10,6 +10,7 @@
     <title>الأشخاص | لوحة الإدارة</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
 </head>
 
@@ -33,14 +34,19 @@
 
                     <div
                         class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-lg shadow-sky-200">
+                        <div
+                            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
 
-                        <x-icons.users class="h-6 w-6" />
+                            <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى"
+                                class="h-full w-full object-cover">
+
+                        </div>
 
                     </div>
 
                     <div>
 
-                        <h1 class="font-black text-slate-800">
+                        <h1 class="font-bold text-slate-800">
                             أبو مصطفى
                         </h1>
 
@@ -57,7 +63,37 @@
                 </button>
 
             </div>
+            <div class="border-t border-slate-100 p-4">
 
+                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
+
+                    <p class="text-xs font-bold text-sky-600">
+                        المسؤول
+                    </p>
+
+                    <p class="mt-1 truncate text-sm font-bold text-slate-700">
+                        {{ auth()->user()->name }}
+                    </p>
+
+                </div>
+
+
+                <form method="POST" action="{{ route('logout') }}">
+
+                    @csrf
+
+                    <button type="submit"
+                        class="cursor-pointer flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
+
+                        <x-icons.logout class="h-5 w-5" />
+
+                        تسجيل الخروج
+
+                    </button>
+
+                </form>
+
+            </div>
 
             <nav class="flex-1 space-y-2 p-4">
 
@@ -74,7 +110,7 @@
 
 
                 <a href="{{ route('admin.people.index') }}"
-                    class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-black text-sky-600">
+                    class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-bold text-sky-600">
 
                     <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100">
                         <x-icons.users class="h-5 w-5" />
@@ -111,37 +147,7 @@
             </nav>
 
 
-            <div class="border-t border-slate-100 p-4">
 
-                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
-
-                    <p class="text-xs font-bold text-sky-600">
-                        المسؤول
-                    </p>
-
-                    <p class="mt-1 truncate text-sm font-black text-slate-700">
-                        {{ auth()->user()->email }}
-                    </p>
-
-                </div>
-
-
-                <form method="POST" action="{{ route('logout') }}">
-
-                    @csrf
-
-                    <button type="submit"
-                        class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
-
-                        <x-icons.logout class="h-5 w-5" />
-
-                        تسجيل الخروج
-
-                    </button>
-
-                </form>
-
-            </div>
 
         </aside>
 
@@ -166,7 +172,7 @@
                             إدارة البيانات
                         </p>
 
-                        <h2 class="font-black text-slate-800">
+                        <h2 class="font-bold text-slate-800">
                             الأشخاص
                         </h2>
 
@@ -176,7 +182,7 @@
 
 
                 <a href="{{ route('admin.people.create') }}"
-                    class="flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-600">
+                    class="flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-600">
 
                     <x-icons.plus class="h-4 w-4" />
 
@@ -215,7 +221,7 @@
                             قاعدة البيانات
                         </p>
 
-                        <h1 class="mt-1 text-2xl font-black text-slate-800 sm:text-3xl">
+                        <h1 class="mt-1 text-2xl font-bold text-slate-800 sm:text-3xl">
                             قائمة الأشخاص
                         </h1>
 
@@ -226,7 +232,7 @@
                     <div class="mb-6 flex justify-start">
 
                         <button type="button" onclick="toggleExcelImport()"
-                            class="inline-flex items-center gap-2 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-xl">
+                            class="cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-xl">
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4v16m8-8H4" />
@@ -248,7 +254,7 @@
 
                                 <div>
 
-                                    <h2 class="text-lg font-black text-slate-800">
+                                    <h2 class="text-lg font-bold text-slate-800">
                                         إضافة الأشخاص من Excel
                                     </h2>
 
@@ -259,7 +265,7 @@
                                 </div>
 
                                 <button type="button" onclick="toggleExcelImport()"
-                                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-slate-400 transition duration-300 hover:bg-red-50 hover:text-red-500">
+                                    class="cursor-pointer flex h-9 w-9 items-center justify-center rounded-xl bg-white text-slate-400 transition duration-300 hover:bg-red-50 hover:text-red-500">
                                     ✕
                                 </button>
 
@@ -279,7 +285,7 @@
                                 {{-- File --}}
                                 <div>
 
-                                    <label for="excel_file" class="mb-2 block text-sm font-black text-slate-700">
+                                    <label for="excel_file" class="mb-2 block text-sm font-bold text-slate-700">
                                         ملف Excel
                                     </label>
 
@@ -307,7 +313,7 @@
                                 {{-- Election Status --}}
                                 <div>
 
-                                    <p class="mb-3 text-sm font-black text-slate-700">
+                                    <p class="mb-3 text-sm font-bold text-slate-700">
                                         حالة الأشخاص في الملف
                                     </p>
 
@@ -337,7 +343,7 @@
 
                                                     <div>
 
-                                                        <p class="font-black text-slate-700">
+                                                        <p class="font-bold text-slate-700">
                                                             منتخب
                                                         </p>
 
@@ -378,7 +384,7 @@
 
                                                     <div>
 
-                                                        <p class="font-black text-slate-700">
+                                                        <p class="font-bold text-slate-700">
                                                             غير منتخب
                                                         </p>
 
@@ -403,7 +409,7 @@
                                 <div class="flex justify-end">
 
                                     <button type="submit"
-                                        class="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-6 py-3.5 text-sm font-black text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                                        class="cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
 
                                         <svg class="h-5 w-5" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -443,7 +449,7 @@
 
 
                             <button type="submit"
-                                class="rounded-2xl bg-slate-800 px-6 py-3.5 text-sm font-black text-white transition hover:bg-slate-700">
+                                class="cursor-pointer rounded-2xl bg-slate-800 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-700">
                                 بحث
                             </button>
 
@@ -453,7 +459,7 @@
                         {{-- Status --}}
                         <div class="mt-5 border-t border-slate-100 pt-5">
 
-                            <p class="mb-3 text-sm font-black text-slate-700">
+                            <p class="mb-3 text-sm font-bold text-slate-700">
                                 تصفية حسب الحالة
                             </p>
 
@@ -462,7 +468,7 @@
 
 
                                 <a href="{{ route('admin.people.index', ['search' => request('search')]) }}"
-                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-black transition
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-bold transition
                                 {{ !request()->has('status')
                                     ? 'border-sky-400 bg-sky-50 text-sky-600'
                                     : 'border-slate-100 text-slate-500 hover:border-sky-200' }}">
@@ -475,7 +481,7 @@
 
 
                                 <a href="{{ route('admin.people.index', ['status' => 'elected', 'search' => request('search')]) }}"
-                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-black transition
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-bold transition
                                 {{ request('status') === 'elected'
                                     ? 'border-green-400 bg-green-50 text-green-600'
                                     : 'border-slate-100 text-slate-500 hover:border-green-200' }}">
@@ -488,7 +494,7 @@
 
 
                                 <a href="{{ route('admin.people.index', ['status' => 'not_elected', 'search' => request('search')]) }}"
-                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-black transition
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 px-4 py-3 text-sm font-bold transition
                                 {{ request('status') === 'not_elected'
                                     ? 'border-red-400 bg-red-50 text-red-600'
                                     : 'border-slate-100 text-slate-500 hover:border-red-200' }}">
@@ -515,7 +521,7 @@
 
                                 <thead class="bg-slate-50">
 
-                                    <tr class="text-xs font-black text-slate-500">
+                                    <tr class="text-xs font-bold text-slate-500">
 
                                         <th class="px-5 py-4">
                                             الاسم
@@ -559,7 +565,7 @@
 
                                                     </div>
 
-                                                    <span class="font-black text-slate-700">
+                                                    <span class="font-bold text-slate-700">
                                                         {{ $person->name }}
                                                     </span>
 
@@ -598,7 +604,7 @@
 
                                                 @if ($person->is_elected)
                                                     <span
-                                                        class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-black text-green-600">
+                                                        class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-600">
 
                                                         <x-icons.check class="h-4 w-4" />
 
@@ -607,7 +613,7 @@
                                                     </span>
                                                 @else
                                                     <span
-                                                        class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1.5 text-xs font-black text-red-600">
+                                                        class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1.5 text-xs font-bold text-red-600">
 
                                                         <x-icons.x class="h-4 w-4" />
 
@@ -625,7 +631,7 @@
 
 
                                                     <a href="{{ route('admin.people.edit', $person) }}"
-                                                        class="flex items-center gap-1.5 rounded-xl bg-sky-50 px-3 py-2 text-xs font-black text-sky-600 transition hover:bg-sky-100">
+                                                        class="flex items-center gap-1.5 rounded-xl bg-sky-50 px-3 py-2 text-xs font-bold text-sky-600 transition hover:bg-sky-100">
 
                                                         <x-icons.edit class="h-4 w-4" />
 
@@ -643,7 +649,7 @@
                                                         @method('DELETE')
 
                                                         <button type="submit"
-                                                            class="flex items-center gap-1.5 rounded-xl bg-red-50 px-3 py-2 text-xs font-black text-red-500 transition hover:bg-red-100">
+                                                            class="flex items-center gap-1.5 rounded-xl bg-red-50 px-3 py-2 text-xs font-bold text-red-500 transition hover:bg-red-100">
 
                                                             <x-icons.trash class="h-4 w-4" />
 
@@ -672,7 +678,7 @@
 
                                                 </div>
 
-                                                <h3 class="font-black text-slate-700">
+                                                <h3 class="font-bold text-slate-700">
                                                     لا يوجد أشخاص
                                                 </h3>
 

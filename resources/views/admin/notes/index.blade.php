@@ -10,10 +10,11 @@
     <title>الأشخاص | لوحة الإدارة</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
 </head>
 
-<body class="min-h-screen bg-slate-50">
+<body class="min-h-screen bg-slate-50 ">
 
     <div class="flex min-h-screen">
 
@@ -34,17 +35,23 @@
                     <div
                         class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-lg shadow-sky-200">
 
-                        <x-icons.users class="h-6 w-6" />
+                        <div
+                            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
+
+                            <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى"
+                                class="h-full w-full object-cover">
+
+                        </div>
 
                     </div>
 
                     <div>
 
-                        <h1 class="font-black text-slate-800">
+                        <h1 class="font-bold text-slate-800">
                             أبو مصطفى
                         </h1>
 
-                        <p class="text-xs text-slate-400">
+                        <p class="text-xs font-bold text-slate-400">
                             لوحة الإدارة
                         </p>
 
@@ -58,6 +65,37 @@
 
             </div>
 
+            <div class="border-t border-slate-100 p-4">
+
+                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
+
+                    <p class="text-xs font-bold text-sky-600">
+                        المسؤول
+                    </p>
+
+                    <p class="mt-1 truncate text-sm font-black text-slate-700">
+                        {{ auth()->user()->name }}
+                    </p>
+
+                </div>
+
+
+                <form method="POST" action="{{ route('logout') }}">
+
+                    @csrf
+
+                    <button type="submit"
+                        class="cursor-pointer flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
+
+                        <x-icons.logout class="h-5 w-5" />
+
+                        تسجيل الخروج
+
+                    </button>
+
+                </form>
+
+            </div>
 
             <nav class="flex-1 space-y-2 p-4">
 
@@ -98,7 +136,7 @@
 
 
                 <a href="{{ route('admin.notes.index') }}"
-                    class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-black text-sky-600">
+                    class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-bold text-sky-600">
 
                     <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
                         <x-icons.notes class="h-5 w-5" />
@@ -111,37 +149,7 @@
             </nav>
 
 
-            <div class="border-t border-slate-100 p-4">
 
-                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
-
-                    <p class="text-xs font-bold text-sky-600">
-                        المسؤول
-                    </p>
-
-                    <p class="mt-1 truncate text-sm font-black text-slate-700">
-                        {{ auth()->user()->email }}
-                    </p>
-
-                </div>
-
-
-                <form method="POST" action="{{ route('logout') }}">
-
-                    @csrf
-
-                    <button type="submit"
-                        class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
-
-                        <x-icons.logout class="h-5 w-5" />
-
-                        تسجيل الخروج
-
-                    </button>
-
-                </form>
-
-            </div>
 
         </aside>
 
@@ -163,7 +171,7 @@
                             إدارة البيانات
                         </p>
 
-                        <h2 class="font-black text-slate-800">
+                        <h2 class="font-bold text-slate-800">
                             الملاحظات
                         </h2>
 
@@ -188,7 +196,7 @@
                         تواصل المستخدمين
                     </p>
 
-                    <h2 class="mt-1 text-2xl font-black text-slate-800">
+                    <h2 class="mt-1 text-2xl font-bold text-slate-800">
                         الملاحظات المرسلة
                     </h2>
 
@@ -221,7 +229,7 @@
 
                                     <div>
 
-                                        <h3 class="font-black text-slate-800">
+                                        <h3 class="font-bold text-slate-800">
                                             {{ $note->person->name ?? 'شخص محذوف' }}
                                         </h3>
 
@@ -236,7 +244,7 @@
 
                                 @if ($note->status == 'reviewed')
                                     <span
-                                        class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-black text-green-600">
+                                        class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-600">
 
                                         <x-icons.check class="h-4 w-4" />
 
@@ -245,7 +253,7 @@
                                     </span>
                                 @else
                                     <span
-                                        class="inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-black text-amber-600">
+                                        class="inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-600">
                                         جديدة
                                     </span>
                                 @endif
@@ -273,7 +281,7 @@
                                         @method('PATCH')
 
                                         <button type="submit"
-                                            class="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-2.5 text-xs font-black text-green-600 transition hover:bg-green-100">
+                                            class="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-2.5 text-xs font-bold text-green-600 transition hover:bg-green-100">
 
                                             <x-icons.check class="h-4 w-4" />
 
@@ -293,7 +301,7 @@
                                     @method('DELETE')
 
                                     <button type="submit"
-                                        class="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-xs font-black text-red-500 transition hover:bg-red-100">
+                                        class="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-100">
 
                                         <x-icons.trash class="h-4 w-4" />
 
@@ -318,7 +326,7 @@
 
                             </div>
 
-                            <h3 class="font-black text-slate-700">
+                            <h3 class="font-bold text-slate-700">
                                 لا توجد ملاحظات
                             </h3>
 

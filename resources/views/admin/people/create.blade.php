@@ -9,6 +9,7 @@
     <title>إضافة شخص | أبو مصطفى</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
 </head>
 
@@ -23,7 +24,7 @@
 
                 <a href="{{ route('admin.people.index') }}"
                     class="ml-3 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition hover:bg-sky-50 hover:text-sky-600">
-                    ←
+                    →
                 </a>
 
                 <div>
@@ -32,7 +33,7 @@
                         إدارة الأشخاص
                     </p>
 
-                    <h1 class="font-black text-slate-800">
+                    <h1 class="font-bold text-slate-800">
                         إضافة شخص
                     </h1>
 
@@ -70,7 +71,7 @@
 
                         </div>
 
-                        <h2 class="text-xl font-black text-slate-800">
+                        <h2 class="text-xl font-bold text-slate-800">
                             بيانات الشخص
                         </h2>
 
@@ -161,7 +162,7 @@
 
                                         <x-icons.check class="mx-auto h-6 w-6 text-green-500" />
 
-                                        <p class="mt-1 text-sm font-black text-green-600">
+                                        <p class="mt-1 text-sm font-bold text-green-600">
                                             منتخب
                                         </p>
 
@@ -180,7 +181,7 @@
 
                                         <x-icons.x class="mx-auto h-6 w-6 text-red-500" />
 
-                                        <p class="mt-1 text-sm font-black text-red-600">
+                                        <p class="mt-1 text-sm font-bold text-red-600">
                                             غير منتخب
                                         </p>
 
@@ -196,7 +197,7 @@
                         <div class="flex flex-col gap-3 pt-3 sm:flex-row">
 
                             <button type="submit"
-                                class="flex-1 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-5 py-3.5 text-sm font-black text-white transition hover:-translate-y-0.5 hover:shadow-lg">
+                                class="cursor-pointer flex-1 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:shadow-lg">
                                 حفظ الشخص
                             </button>
 
