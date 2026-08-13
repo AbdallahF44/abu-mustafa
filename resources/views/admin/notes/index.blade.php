@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>الملاحظات | لوحة الإدارة</title>
+    <title>الأشخاص | لوحة الإدارة</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -15,60 +15,171 @@
 
 <body class="min-h-screen bg-slate-50">
 
-    <div class="min-h-screen">
+    <div class="flex min-h-screen">
 
 
-        <header class="border-b border-slate-200 bg-white">
+        {{-- Overlay --}}
+        <div id="sidebar-overlay" class="fixed inset-0 z-40 hidden bg-slate-900/40 backdrop-blur-sm lg:hidden"
+            onclick="closeSidebar()"></div>
 
-            <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+        {{-- Sidebar --}}
+        <aside id="sidebar"
+            class="fixed inset-y-0 right-0 z-50 flex w-72 translate-x-full flex-col border-l border-slate-200 bg-white shadow-xl transition-transform duration-300 lg:static lg:translate-x-0 lg:shadow-none">
+
+            <div class="flex h-20 items-center justify-between border-b border-slate-100 px-6">
 
                 <div class="flex items-center gap-3">
 
-                    <a href="{{ route('admin.dashboard') }}"
-                        class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition hover:bg-sky-50 hover:text-sky-600">
-                        ←
-                    </a>
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-lg shadow-sky-200">
+
+                        <x-icons.users class="h-6 w-6" />
+
+                    </div>
+
+                    <div>
+
+                        <h1 class="font-black text-slate-800">
+                            أبو مصطفى
+                        </h1>
+
+                        <p class="text-xs text-slate-400">
+                            لوحة الإدارة
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button onclick="closeSidebar()" class="rounded-xl p-2 text-slate-400 hover:bg-slate-100 lg:hidden">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <nav class="flex-1 space-y-2 p-4">
+
+                <a href="{{ route('admin.dashboard') }}"
+                    class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
+
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
+                        <x-icons.dashboard class="h-5 w-5" />
+                    </span>
+
+                    لوحة التحكم
+
+                </a>
+
+
+                <a href="{{ route('admin.people.index') }}"
+                    class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
+
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100">
+                        <x-icons.users class="h-5 w-5" />
+                    </span>
+
+                    الأشخاص
+
+                </a>
+
+
+                <a href="{{ route('admin.people.create') }}"
+                    class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
+
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
+                        <x-icons.plus class="h-5 w-5" />
+                    </span>
+
+                    إضافة شخص
+
+                </a>
+
+
+                <a href="{{ route('admin.notes.index') }}"
+                    class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-black text-sky-600">
+
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
+                        <x-icons.notes class="h-5 w-5" />
+                    </span>
+
+                    الملاحظات
+
+                </a>
+
+            </nav>
+
+
+            <div class="border-t border-slate-100 p-4">
+
+                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
+
+                    <p class="text-xs font-bold text-sky-600">
+                        المسؤول
+                    </p>
+
+                    <p class="mt-1 truncate text-sm font-black text-slate-700">
+                        {{ auth()->user()->email }}
+                    </p>
+
+                </div>
+
+
+                <form method="POST" action="{{ route('logout') }}">
+
+                    @csrf
+
+                    <button type="submit"
+                        class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
+
+                        <x-icons.logout class="h-5 w-5" />
+
+                        تسجيل الخروج
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </aside>
+
+
+        <main class="min-w-0 flex-1">
+            <header
+                class="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur sm:px-6 lg:px-8">
+
+                <div class="flex items-center gap-3">
+
+                    <button onclick="openSidebar()"
+                        class="rounded-xl p-2.5 text-slate-600 hover:bg-slate-100 lg:hidden">
+                        ☰
+                    </button>
 
                     <div>
 
                         <p class="text-xs font-bold text-sky-500">
-                            لوحة الإدارة
+                            إدارة البيانات
                         </p>
 
-                        <h1 class="font-black text-slate-800">
+                        <h2 class="font-black text-slate-800">
                             الملاحظات
-                        </h1>
+                        </h2>
 
                     </div>
 
                 </div>
 
 
-                <a href="{{ route('admin.people.index') }}"
-                    class="flex items-center gap-2 rounded-xl bg-sky-50 px-4 py-2.5 text-sm font-black text-sky-600 transition hover:bg-sky-100">
-
-                    <x-icons.users class="h-4 w-4" />
-
-                    الأشخاص
-
-                </a>
-
-            </div>
-
-        </header>
 
 
-        <main class="px-4 py-8 sm:px-6 lg:px-8">
+            </header>
 
-            <div class="mx-auto max-w-5xl">
+            <div class="px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
 
 
-                @if (session('success'))
-                    <div
-                        class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm font-bold text-green-600">
-                        {{ session('success') }}
-                    </div>
-                @endif
+
 
 
                 <div class="mb-7">
@@ -83,7 +194,12 @@
 
                 </div>
 
-
+                @if (session('success'))
+                    <div
+                        class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm font-bold text-green-600">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="space-y-4">
 
                     @forelse($notes as $note)
@@ -118,7 +234,7 @@
                                 </div>
 
 
-                                @if ($note->reviewed)
+                                @if ($note->status == 'reviewed')
                                     <span
                                         class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-black text-green-600">
 
@@ -140,7 +256,7 @@
                             <div class="mt-5 rounded-2xl bg-slate-50 p-4">
 
                                 <p class="text-sm leading-7 text-slate-600">
-                                    {{ $note->note }}
+                                    {{ $note->message }}
                                 </p>
 
                             </div>
@@ -149,7 +265,7 @@
                             <div class="mt-4 flex flex-wrap gap-2">
 
 
-                                @if (!$note->reviewed)
+                                @if (!$note->status == 'reviewed')
                                     <form method="POST" action="{{ route('admin.notes.review', $note) }}">
 
                                         @csrf
@@ -230,6 +346,59 @@
 
     </div>
 
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function openSidebar() {
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    </script>
+    <script>
+        function toggleExcelImport() {
+
+            const box = document.getElementById('excelImportBox');
+
+            if (box.classList.contains('hidden')) {
+
+                box.classList.remove('hidden');
+
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(-10px)';
+
+                requestAnimationFrame(() => {
+
+                    box.style.transition = 'all 0.3s ease';
+
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+
+                });
+
+            } else {
+
+                box.style.transition = 'all 0.25s ease';
+
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(-10px)';
+
+                setTimeout(() => {
+                    box.classList.add('hidden');
+                }, 250);
+
+            }
+
+        }
+    </script>
 </body>
 
 </html>

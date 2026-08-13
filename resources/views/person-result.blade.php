@@ -175,11 +175,11 @@
                             @csrf
 
 
-                            <textarea name="note" rows="4" required placeholder="اكتب ملاحظتك هنا..."
-                                class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-medium outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">{{ old('note') }}</textarea>
+                            <textarea name="message" rows="4" required placeholder="اكتب ملاحظتك هنا..."
+                                class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-medium outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">{{ old('message') }}</textarea>
 
 
-                            @error('note')
+                            @error('message')
                                 <p class="mt-2 text-xs font-bold text-red-500">
                                     {{ $message }}
                                 </p>
@@ -200,11 +200,11 @@
                     </div>
 
 
-                    @if (session('success'))
+                    @if (session('note_success'))
                         <div
                             class="rounded-2xl border border-green-200 bg-green-50 p-4 text-sm font-bold text-green-600">
 
-                            ✓ {{ session('success') }}
+                            ✓ {{ session('note_success') }}
 
                         </div>
                     @endif
