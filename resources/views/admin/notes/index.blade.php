@@ -26,20 +26,20 @@
 
         {{-- Sidebar --}}
         <aside id="sidebar"
-            class="fixed inset-y-0 right-0 z-50 flex w-72 translate-x-full flex-col border-l border-slate-200 bg-white shadow-xl transition-transform duration-300 lg:static lg:translate-x-0 lg:shadow-none">
+            class="fixed inset-y-0 right-0 z-50 flex flex-col transition-transform duration-300 translate-x-full bg-white border-l shadow-xl w-72 border-slate-200 lg:static lg:translate-x-0 lg:shadow-none">
 
-            <div class="flex h-20 items-center justify-between border-b border-slate-100 px-6">
+            <div class="flex items-center justify-between h-20 px-6 border-b border-slate-100">
 
                 <div class="flex items-center gap-3">
 
                     <div
-                        class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-lg shadow-sky-200">
+                        class="flex items-center justify-center text-white shadow-lg h-11 w-11 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 shadow-sky-200">
 
                         <div
-                            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
+                            class="flex items-center justify-center w-10 h-10 overflow-hidden bg-white shadow-lg rounded-2xl ring-1 ring-slate-200">
 
                             <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى"
-                                class="h-full w-full object-cover">
+                                class="object-cover w-full h-full">
 
                         </div>
 
@@ -59,21 +59,21 @@
 
                 </div>
 
-                <button onclick="closeSidebar()" class="rounded-xl p-2 text-slate-400 hover:bg-slate-100 lg:hidden">
+                <button onclick="closeSidebar()" class="p-2 rounded-xl text-slate-400 hover:bg-slate-100 lg:hidden">
                     ✕
                 </button>
 
             </div>
 
-            <div class="border-t border-slate-100 p-4">
+            <div class="p-4 border-t border-slate-100">
 
-                <div class="mb-3 rounded-2xl bg-sky-50 p-4">
+                <div class="p-4 mb-3 rounded-2xl bg-sky-50">
 
                     <p class="text-xs font-bold text-sky-600">
                         المسؤول
                     </p>
 
-                    <p class="mt-1 truncate text-sm font-black text-slate-700">
+                    <p class="mt-1 text-sm font-black truncate text-slate-700">
                         {{ auth()->user()->name }}
                     </p>
 
@@ -85,9 +85,9 @@
                     @csrf
 
                     <button type="submit"
-                        class="cursor-pointer flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-red-500 transition hover:bg-red-50">
+                        class="flex items-center w-full gap-3 px-4 py-3 text-sm font-bold text-red-500 transition cursor-pointer rounded-2xl hover:bg-red-50">
 
-                        <x-icons.logout class="h-5 w-5" />
+                        <x-icons.logout class="w-5 h-5" />
 
                         تسجيل الخروج
 
@@ -97,13 +97,13 @@
 
             </div>
 
-            <nav class="flex-1 space-y-2 p-4">
+            <nav class="flex-1 p-4 space-y-2">
 
                 <a href="{{ route('admin.dashboard') }}"
                     class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
 
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
-                        <x-icons.dashboard class="h-5 w-5" />
+                    <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-slate-100">
+                        <x-icons.dashboard class="w-5 h-5" />
                     </span>
 
                     لوحة التحكم
@@ -114,8 +114,8 @@
                 <a href="{{ route('admin.people.index') }}"
                     class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
 
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100">
-                        <x-icons.users class="h-5 w-5" />
+                    <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-sky-100">
+                        <x-icons.users class="w-5 h-5" />
                     </span>
 
                     الأشخاص
@@ -126,8 +126,8 @@
                 <a href="{{ route('admin.people.create') }}"
                     class="flex items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-600 transition hover:bg-sky-50 hover:text-sky-600">
 
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
-                        <x-icons.plus class="h-5 w-5" />
+                    <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-slate-100">
+                        <x-icons.plus class="w-5 h-5" />
                     </span>
 
                     إضافة شخص
@@ -138,8 +138,8 @@
                 <a href="{{ route('admin.notes.index') }}"
                     class="flex items-center gap-3 rounded-2xl bg-sky-50 px-4 py-3.5 text-sm font-bold text-sky-600">
 
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100">
-                        <x-icons.notes class="h-5 w-5" />
+                    <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-slate-100">
+                        <x-icons.notes class="w-5 h-5" />
                     </span>
 
                     الملاحظات
@@ -154,9 +154,9 @@
         </aside>
 
 
-        <main class="min-w-0 flex-1">
+        <main class="flex-1 min-w-0">
             <header
-                class="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur sm:px-6 lg:px-8">
+                class="sticky top-0 z-30 flex items-center justify-between h-20 px-4 border-b border-slate-200 bg-white/90 backdrop-blur sm:px-6 lg:px-8">
 
                 <div class="flex items-center gap-3">
 
@@ -204,7 +204,7 @@
 
                 @if (session('success'))
                     <div
-                        class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm font-bold text-green-600">
+                        class="p-4 mb-6 text-sm font-bold text-green-600 border border-green-200 rounded-2xl bg-green-50">
                         {{ session('success') }}
                     </div>
                 @endif
@@ -220,9 +220,9 @@
                                 <div class="flex gap-4">
 
                                     <div
-                                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sky-50 text-sky-500">
+                                        class="flex items-center justify-center w-12 h-12 shrink-0 rounded-2xl bg-sky-50 text-sky-500">
 
-                                        <x-icons.notes class="h-6 w-6" />
+                                        <x-icons.notes class="w-6 h-6" />
 
                                     </div>
 
@@ -246,7 +246,7 @@
                                     <span
                                         class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-600">
 
-                                        <x-icons.check class="h-4 w-4" />
+                                        <x-icons.check class="w-4 h-4" />
 
                                         تمت المراجعة
 
@@ -261,7 +261,7 @@
                             </div>
 
 
-                            <div class="mt-5 rounded-2xl bg-slate-50 p-4">
+                            <div class="p-4 mt-5 rounded-2xl bg-slate-50">
 
                                 <p class="text-sm leading-7 text-slate-600">
                                     {{ $note->message }}
@@ -270,10 +270,10 @@
                             </div>
 
 
-                            <div class="mt-4 flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 mt-4">
 
 
-                                @if (!$note->status == 'reviewed')
+                                @if ($note->status != 'reviewed')
                                     <form method="POST" action="{{ route('admin.notes.review', $note) }}">
 
                                         @csrf
@@ -281,9 +281,9 @@
                                         @method('PATCH')
 
                                         <button type="submit"
-                                            class="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-2.5 text-xs font-bold text-green-600 transition hover:bg-green-100">
+                                            class="cursor-pointer flex items-center gap-2 rounded-xl bg-green-50 px-4 py-2.5 text-xs font-bold text-green-600 transition hover:bg-green-100">
 
-                                            <x-icons.check class="h-4 w-4" />
+                                            <x-icons.check class="w-4 h-4" />
 
                                             تمت المراجعة
 
@@ -301,9 +301,9 @@
                                     @method('DELETE')
 
                                     <button type="submit"
-                                        class="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-100">
+                                        class="cursor-pointer flex items-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-100">
 
-                                        <x-icons.trash class="h-4 w-4" />
+                                        <x-icons.trash class="w-4 h-4" />
 
                                         حذف
 
@@ -317,12 +317,12 @@
 
                     @empty
 
-                        <div class="rounded-3xl border border-slate-100 bg-white px-6 py-16 text-center shadow-sm">
+                        <div class="px-6 py-16 text-center bg-white border shadow-sm rounded-3xl border-slate-100">
 
                             <div
-                                class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 text-slate-400">
+                                class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-50 text-slate-400">
 
-                                <x-icons.notes class="h-8 w-8" />
+                                <x-icons.notes class="w-8 h-8" />
 
                             </div>
 
