@@ -13,7 +13,7 @@
 
 <body class="min-h-screen bg-gradient-to-br from-sky-50 via-white to-blue-50">
 
-    <div class="flex min-h-screen items-center justify-center px-4 py-10">
+    <div class="flex items-center justify-center min-h-screen px-4 py-10">
 
         <div class="w-full max-w-xl">
 
@@ -21,12 +21,12 @@
             <div class="mb-8 text-center">
 
                 <div
-                    class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-xl shadow-sky-200">
+                    class="flex items-center justify-center w-20 h-20 mx-auto mb-5 text-white shadow-xl rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 shadow-sky-200">
 
                     <div
-                        class="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
+                        class="flex items-center justify-center w-16 h-16 overflow-hidden bg-white shadow-lg rounded-2xl ring-1 ring-slate-200">
 
-                        <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى" class="h-full w-full object-cover">
+                        <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى" class="object-cover w-full h-full">
 
                     </div>
 
@@ -49,9 +49,9 @@
 
                 @if (session('error'))
                     <div
-                        class="mb-5 flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-600">
+                        class="flex items-center gap-3 p-4 mb-5 text-sm font-bold text-red-600 border border-red-200 rounded-2xl bg-red-50">
 
-                        <x-icons.x class="h-5 w-5 shrink-0" />
+                        <x-icons.x class="w-5 h-5 shrink-0" />
 
                         <span>
                             {{ session('error') }}
@@ -66,26 +66,26 @@
                     @csrf
 
 
-                    <label for="national_id" class="mb-2 block text-sm font-bold text-slate-700">
+                    <label for="national_id" class="block mb-2 text-sm font-bold text-slate-700">
                         رقم الهوية
                     </label>
 
 
                     <div class="relative">
 
-                        <x-icons.id-card class="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+                        <x-icons.id-card class="absolute w-5 h-5 -translate-y-1/2 right-4 top-1/2 text-slate-400" />
 
                         <input id="national_id" name="national_id" type="text" inputmode="numeric" autocomplete="off"
                             value="{{ old('national_id') }}" placeholder="أدخل رقم الهوية" required
-                            class="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pr-12 pl-4 text-sm font-bold text-slate-700 outline-none transition duration-300 placeholder:text-slate-400 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">
+                            class="w-full py-4 pl-4 pr-12 text-sm font-bold transition duration-300 border outline-none rounded-2xl border-slate-200 bg-slate-50 text-slate-700 placeholder:text-slate-400 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">
 
                     </div>
 
 
                     <button type="submit"
-                        class="cursor-pointer mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        class="flex items-center justify-center w-full gap-2 px-5 py-4 mt-4 text-sm font-bold text-white transition duration-300 shadow-lg cursor-pointer rounded-2xl bg-gradient-to-l from-sky-500 to-blue-600 shadow-sky-100 hover:-translate-y-1 hover:shadow-xl">
 
-                        <x-icons.search class="h-5 w-5" />
+                        <x-icons.search class="w-5 h-5" />
 
                         بحث عن الهوية
 
@@ -96,9 +96,20 @@
             </div>
 
 
-            <p class="mt-6 text-center text-xs text-slate-400">
-                جميع البيانات المعروضة مخصصة للاستخدام العائلي.
-            </p>
+            <div class="mt-8 text-center">
+
+                <p class="text-xs text-slate-400">
+                    جميع البيانات المعروضة مخصصة للاستخدام العائلي.
+                </p>
+
+                <p class="mt-2 text-xs font-medium text-slate-400">
+                    Developed by
+                    <span class="font-bold text-sky-500">
+                        Abdallah Fawzi
+                    </span>
+                </p>
+
+            </div>
 
         </div>
 

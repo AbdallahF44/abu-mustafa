@@ -14,22 +14,24 @@
 
 </head>
 
-<body class="page-background min-h-screen">
+<body class="min-h-screen page-background">
 
-    <div class="flex min-h-screen items-center justify-center px-4 py-10">
+    <div class="flex items-center justify-center min-h-screen px-4 py-10">
 
         <div class="w-full max-w-md">
 
             {{-- Logo --}}
-            <div class="mb-7 text-center">
+            <div class="text-center mb-7">
 
                 <div
-                    class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-3xl bg-sky-100 shadow-lg shadow-sky-100">
+                    class="flex items-center justify-center w-20 h-20 mx-auto mb-5 text-white shadow-xl rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 shadow-sky-200">
 
-                    <svg class="h-10 w-10 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                            d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" />
-                    </svg>
+                    <div
+                        class="flex items-center justify-center w-16 h-16 overflow-hidden bg-white shadow-lg rounded-2xl ring-1 ring-slate-200">
+
+                        <img src="{{ asset('images/logo.png') }}" alt="أبو مصطفى" class="object-cover w-full h-full">
+
+                    </div>
 
                 </div>
 
@@ -44,11 +46,11 @@
             </div>
 
 
-            <div class="modern-card p-6 sm:p-8">
+            <div class="p-6 modern-card sm:p-8">
 
                 {{-- Session Status --}}
                 @if (session('status'))
-                    <div class="mb-5 rounded-2xl bg-green-50 p-4 text-sm font-semibold text-green-700">
+                    <div class="p-4 mb-5 text-sm font-semibold text-green-700 rounded-2xl bg-green-50">
                         {{ session('status') }}
                     </div>
                 @endif
@@ -57,7 +59,7 @@
                 {{-- Errors --}}
                 @if ($errors->any())
 
-                    <div class="mb-5 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                    <div class="p-4 mb-5 text-sm text-red-700 border border-red-200 rounded-2xl bg-red-50">
 
                         @foreach ($errors->all() as $error)
                             <p>
@@ -78,7 +80,7 @@
                     {{-- Email --}}
                     <div>
 
-                        <label for="email" class="mb-2 block text-sm font-bold text-slate-700">
+                        <label for="email" class="block mb-2 text-sm font-bold text-slate-700">
                             البريد الإلكتروني
                         </label>
 
@@ -91,7 +93,7 @@
                     {{-- Password --}}
                     <div>
 
-                        <div class="mb-2 flex items-center justify-between">
+                        <div class="flex items-center justify-between mb-2">
 
                             <label for="password" class="text-sm font-bold text-slate-700">
                                 كلمة المرور
@@ -99,7 +101,7 @@
 
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}"
-                                    class="text-xs font-bold text-sky-600 transition hover:text-sky-700">
+                                    class="text-xs font-bold transition text-sky-600 hover:text-sky-700">
                                     نسيت كلمة المرور؟
                                 </a>
                             @endif
@@ -113,17 +115,17 @@
 
 
                     {{-- Remember --}}
-                    <label class="flex cursor-pointer items-center gap-3 text-sm text-slate-600">
+                    <label class="flex items-center gap-3 text-sm cursor-pointer text-slate-600">
 
                         <input type="checkbox" name="remember"
-                            class="h-4 w-4 rounded border-slate-300 text-sky-500 focus:ring-sky-200">
+                            class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-200">
 
                         تذكرني
 
                     </label>
 
 
-                    <button type="submit" class="primary-button w-full">
+                    <button type="submit" class="w-full primary-button">
 
                         تسجيل الدخول
 
@@ -134,7 +136,7 @@
             </div>
 
 
-            <p class="mt-6 text-center text-xs text-slate-400">
+            <p class="mt-6 text-xs text-center text-slate-400">
                 نظام إدارة بيانات آل أبو مصطفى
             </p>
 
