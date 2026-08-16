@@ -125,7 +125,7 @@
                     </label>
 
 
-                    <button type="submit" class="w-full primary-button">
+                    <button type="submit" class="w-full cursor-pointer primary-button">
 
                         تسجيل الدخول
 
